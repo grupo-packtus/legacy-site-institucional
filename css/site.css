@@ -27,10 +27,10 @@ h2{font-size:clamp(30px,3.6vw,50px);line-height:1.1;letter-spacing:-.024em;font-
 .topo.solido,.topo.menu-aberto{background:rgba(8,26,46,.95);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 12px 40px -24px rgba(0,0,0,.7)}.topo.solido .util{max-height:0;opacity:0;border:0}
 .menu-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}.menu-btn span{display:block;width:24px;height:2px;background:var(--claro);margin:6px auto;transition:transform .3s}.menu-aberto .menu-btn span:first-child{transform:translateY(4px) rotate(45deg)}.menu-aberto .menu-btn span:last-child{transform:translateY(-4px) rotate(-45deg)}
 /* aberturas */
-.hero,.hero-int{position:relative;display:flex;align-items:flex-end;background:var(--navy2);color:var(--claro);overflow:hidden}.hero{min-height:100vh}.hero-int{min-height:74vh}
+.hero,.hero-int{position:relative;display:flex;align-items:flex-end;background:var(--navy2);color:var(--claro);overflow:hidden}.hero{min-height:clamp(640px,88vh,860px)}.hero-int{min-height:74vh}
 .hero-foto{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.6;animation:zoom 26s ease-out forwards}
 .hero::before,.hero-int::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(8,26,46,.97) 0%,rgba(11,32,56,.84) 46%,rgba(11,32,56,.4) 100%),linear-gradient(0deg,rgba(8,26,46,.92),transparent 45%)}
-.hero .wrap{position:relative;z-index:2;padding:210px 0 110px;display:grid;grid-template-columns:1.3fr .8fr;gap:64px;align-items:end}.hero-int .wrap{position:relative;z-index:2;padding:200px 0 96px}
+.hero .wrap{position:relative;z-index:2;padding:190px 0 90px;display:grid;grid-template-columns:1.15fr .95fr;gap:56px;align-items:center}.hero-int .wrap{position:relative;z-index:2;padding:200px 0 96px}
 .hero h1,.hero-int h1{margin-top:22px}.hero-int h1{font-size:clamp(38px,4.8vw,68px);max-width:19ch}
 .lead{font-size:clamp(17px,1.45vw,20px);color:#D3DAE3;max-width:600px;margin-top:26px}
 .acoes{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;align-items:center}
