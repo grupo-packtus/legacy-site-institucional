@@ -1,0 +1,24 @@
+(function(){
+var P='/institucional/',d=document,pg=d.body.getAttribute('data-pagina')||'';
+var IG='https://www.instagram.com/legacybusiness.mls/',YT='https://www.youtube.com/@LegacyBusiness.b2g';
+var SETA=`<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' aria-hidden='true'><path d='M5 12h14M13 6l6 6-6 6'/></svg>`;
+if(location.search.indexOf('estatico')>-1)d.documentElement.classList.add('estatico');
+var L=[['mentoria/','A mentoria'],['central-de-licitacoes/','Central de Licitações'],['para-quem-e/','Para quem é'],['quem-somos/','Quem somos'],['conteudo/','Conteúdo'],['perguntas/','Perguntas']];
+var nav=L.map(function(l){return `<a href='${P+l[0]}'${pg===l[0]?` class='ativo' aria-current='page'`:''}>${l[1]}</a>`}).join('');
+var h=d.createElement('header');h.className='topo';
+h.innerHTML=`<div class='util'><div class='wrap'><span>Mentoria do mercado público · Parte da Mentoring League Society</span><span><a href='${YT}' target='_blank' rel='noopener'>TV B2G</a><a href='${IG}' target='_blank' rel='noopener'>Instagram</a></span></div></div><div class='wrap barra'><a class='marca-logo' href='${P}' aria-label='Legacy Business B2G, início'><img src='/assets/img/logo/marca-horizontal-branco.svg' alt='Legacy Business B2G'></a><nav class='nav' aria-label='Principal'>${nav}<a class='btn' href='/diagnostico/'>Diagnóstico gratuito</a></nav><button class='menu-btn' aria-label='Abrir menu' aria-expanded='false'><span></span><span></span></button></div>`;
+d.body.insertBefore(h,d.body.firstChild);
+var b=h.querySelector('.menu-btn');b.addEventListener('click',function(){var a=h.classList.toggle('menu-aberto');b.setAttribute('aria-expanded',a)});
+function rola(){h.classList.toggle('solido',window.scrollY>30)}rola();window.addEventListener('scroll',rola,{passive:true});
+if(pg!=='diagnostico'){var c=d.createElement('section');c.className='cta-final';c.innerHTML=`<div class='scope' aria-hidden='true'><div class='varre'></div></div><div class='wrap revela'><p class='olho' style='justify-content:center'><span class='losango'></span>Diagnóstico gratuito</p><div class='filete' style='margin-inline:auto'></div><h2>Comece por onde a sua empresa está <em>hoje.</em></h2><p class='abre'>Uma conversa de 30 minutos com o time do Legacy Business B2G para entender o momento da sua empresa e o caminho até o mercado público.</p><div class='acoes'><a class='btn' href='/diagnostico/'>Quero o Diagnóstico gratuito ${SETA}</a></div></div>`;d.body.appendChild(c)}
+function col(t,l){return `<div><h4>${t}</h4><ul>`+l.map(function(x){var e=x[0].indexOf('http')===0;return `<li><a href='${x[0]}'${e?` target='_blank' rel='noopener'`:''}>${x[1]}</a></li>`}).join('')+'</ul></div>'}
+var f=d.createElement('footer');f.className='rodape-g';
+f.innerHTML=`<div class='wrap'><div class='cols'><div><img src='/assets/img/logo/marca-horizontal-branco.svg' alt='Legacy Business B2G' style='height:32px;width:auto'><p class='frase'>Quem prepara é o Legacy Business B2G. Quem executa é a Central.</p><img class='selo' src='/assets/img/selos/selo-mls-branco.webp' alt='Mentoring League Society'></div>`+col('A mentoria',[[P+'mentoria/','A jornada'],[P+'mentoria/#por-dentro','O que acontece por dentro'],[P+'quem-somos/','Quem somos']])+col('Central de Licitações',[[P+'central-de-licitacoes/','Como a Central trabalha'],[P+'central-de-licitacoes/#radar','Radar de Oportunidades'],[P+'para-quem-e/','Para quem é']])+col('Conteúdo',[[P+'conteudo/#tv','TV B2G'],[P+'conteudo/#instagram','Instagram'],[P+'conteudo/#magazine','Legacy Magazine']])+col('Fale conosco',[['/diagnostico/','Diagnóstico gratuito'],[P+'perguntas/','Perguntas frequentes'],['/privacidade/','Privacidade'],['/termos/','Termos de uso']])+`</div><div class='base'><span>© ${new Date().getFullYear()} Legacy Business B2G. Todos os direitos reservados.</span><span>O resultado vem do governo. O preparo é nosso.</span></div></div>`;
+d.body.appendChild(f);
+function conta(r){r.querySelectorAll('[data-conta]').forEach(function(n){var alvo=+n.getAttribute('data-conta'),t0=null;function p(t){if(!t0)t0=t;var k=Math.min((t-t0)/1300,1);n.textContent=Math.round(alvo*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(p)}requestAnimationFrame(p)})}
+var est=d.documentElement.classList.contains('estatico');
+var rv=d.querySelectorAll('.revela');
+if(est||!('IntersectionObserver' in window)){rv.forEach(function(e){e.classList.add('visto')})}else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');conta(e.target);io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});rv.forEach(function(e){io.observe(e)})}
+var hr=d.querySelector('.hero');if(hr&&!est)setTimeout(function(){conta(hr)},500);
+d.querySelectorAll('.linha').forEach(function(l,i){l.style.transitionDelay=(.15+i*.14)+'s'});
+})();
